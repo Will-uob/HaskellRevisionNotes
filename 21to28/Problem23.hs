@@ -11,11 +11,11 @@ rnd_select l  n
                      return [l!!p | p <- pos] -- return a list of the random elements we got.
 
 -- My own solution using randomRs.
+-- Execute using `stack repl --package random Problem23.hs`
 rnd_select :: [a] -> Int -> IO [a]
 rnd_select [] n = return []
 rnd_select xs n | n < 0 = error "What the fuck is this?"
                 | otherwise = do
                            gen <- newStdGen
                            let positions = take 3 (randomRs (0, (length xs)-1) gen)
-                           return [xs !! z | z <- positions]
-~                                                                 
+                           return [xs !! z | z <- positions]                                                         
